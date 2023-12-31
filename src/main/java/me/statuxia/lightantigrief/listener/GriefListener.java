@@ -1,6 +1,7 @@
 package me.statuxia.lightantigrief.listener;
 
 import lombok.Getter;
+import me.statuxia.lightantigrief.LightAntiGrief;
 import me.statuxia.lightantigrief.config.LAGConfig;
 import net.kyori.adventure.text.Component;
 import me.statuxia.lightantigrief.LAG;
@@ -245,7 +246,7 @@ public class GriefListener implements Listener {
         }
 
         Component component = MessageUtils.generateMessage(player, location, action, currentItem.getType());
-        Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+        LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
         if (LAG.getModerators().isEmpty()) {
             BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), action);
             BufferTrigger.trigger(buffer);
@@ -293,7 +294,7 @@ public class GriefListener implements Listener {
 
 
         Component component = MessageUtils.generateMessage(player, block.getLocation(), GriefAction.BREAK_BLOCK, block.getType());
-        Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+        LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
         if (LAG.getModerators().isEmpty()) {
             BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), GriefAction.BREAK_BLOCK);
             BufferTrigger.trigger(buffer);
@@ -330,14 +331,14 @@ public class GriefListener implements Listener {
         }
 
         Component component = MessageUtils.generateMessage(player, block.getLocation(), GriefAction.PLACE_BLOCK, type);
-        Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+        LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
         if (LAG.getModerators().isEmpty()) {
-            Bukkit.getLogger().info("PLACE");
+            LightAntiGrief.log("PLACE");
             BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), GriefAction.PLACE_BLOCK);
-            Bukkit.getLogger().info("buffer");
+            LightAntiGrief.log("buffer");
             BufferTrigger.trigger(buffer);
-            Bukkit.getLogger().info("total - " + BufferTrigger.getTotal(buffer));
-            Bukkit.getLogger().info("is reached - " + BufferTrigger.isLimitReached(buffer));
+            LightAntiGrief.log("total - " + BufferTrigger.getTotal(buffer));
+            LightAntiGrief.log("is reached - " + BufferTrigger.isLimitReached(buffer));
             if (BufferTrigger.isLimitReached(buffer)) {
                 BanUtils.ban(player.getName());
             }
@@ -380,7 +381,7 @@ public class GriefListener implements Listener {
         }
 
         Component component = MessageUtils.generateMessage(player, clickedBlock.getLocation(), GriefAction.MINECART, item.getType());
-        Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+        LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
         if (LAG.getModerators().isEmpty()) {
             BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), GriefAction.MINECART);
             BufferTrigger.trigger(buffer);
@@ -411,7 +412,7 @@ public class GriefListener implements Listener {
             }
 
             Component component = MessageUtils.generateMessage(block, GriefAction.EXPLODE, block.getType());
-            Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+            LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
             LAG.getModerators().forEach(moderator -> moderator.sendMessage(component));
         });
     }
@@ -445,7 +446,7 @@ public class GriefListener implements Listener {
         }
 
         Component component = MessageUtils.generateMessage(player, clickedBlock.getLocation(), GriefAction.FIRE_CHARGE, clickedBlock.getType());
-        Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+        LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
         if (LAG.getModerators().isEmpty()) {
             BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), GriefAction.FIRE_CHARGE);
             BufferTrigger.trigger(buffer);
@@ -488,7 +489,7 @@ public class GriefListener implements Listener {
         }
 
         Component component = MessageUtils.generateMessage(player, clickedBlock.getLocation(), GriefAction.PLACE_BLOCK, item.getType());
-        Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+        LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
         if (LAG.getModerators().isEmpty()) {
             BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), GriefAction.PLACE_BLOCK);
             BufferTrigger.trigger(buffer);
@@ -593,7 +594,7 @@ public class GriefListener implements Listener {
             }
 
             Component component = MessageUtils.generateMessage(player, block.getLocation(), GriefAction.EXPLODE, block.getType());
-            Bukkit.getLogger().info(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
+            LightAntiGrief.log(MessageUtils.plainText(component).replaceAll("§[0-9abcdefkmonlr]", ""));
             if (LAG.getModerators().isEmpty()) {
                 BufferTrigger buffer = new BufferTrigger(player.getUniqueId(), GriefAction.EXPLODE);
                 BufferTrigger.trigger(buffer);
